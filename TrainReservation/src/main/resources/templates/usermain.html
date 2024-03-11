@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>TRS</title>
+    <link rel="stylesheet" href="uploads/style1.css"/>
+    <style>
+        .content h1 {
+          color: #1f1f25;
+          font-size:40px;
+          font-weight: 900;
+          line-height: 90px;
+          text-transform: inherit;
+          width: 70%;
+        }
+
+
+        .content h1 span {
+          color: #fd4766;
+        }
+           /* Dropdown menu */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        width: max-content;
+
+      /* Adjust the width */
+        z-index: 1;
+        border-radius: 4px; /* Add border radius for rounded corners */
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+     .dropdown-content a {
+        color: black;
+        padding: 10px 25px; /* Adjust padding as needed */
+        font-size: 14px;
+        text-decoration: none;
+        width: 100%;
+        display: block;
+        height: 50px; /* Adjust height as needed */
+        line-height: 30px; /* Center the text vertically */
+      }
+
+      .dropdown-content a:last-child {
+        border-bottom: none; /* Remove border for the last option */
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+       /* Dropdown menu */
+        .social-media {
+          display: flex;
+          justify-content:left;
+          align-items: left;
+          margin-top: 10px;
+          background: none;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 40px;
+          margin: 0.5rem; /* Reduce the margin between images */
+          border-radius: 50%; /* Adds circular shape */
+          border: 2px solid aqua; /* Add border to create square shape */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          /* Ensure image stays within circular shape */
+        }
+
+        .social-icon img {
+          width: 100%; /* Make the image fill the circular container */
+          height: 100%;
+          object-fit: cover; /* Maintain aspect ratio of the image */
+        }
+    </style>
+</head>
+<body>
+<div class="hero">
+    <nav>
+        <img src="uploads/logo.png" class="logo"/>
+
+        <ul class="hello">
+
+
+            <li><a href="">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">SignIn</a>
+                <div class="dropdown-content">
+                    <a href="/home">User</a>
+
+
+                    <a href="/send_otp">Admin</a>
+
+
+                </div>
+            </li>
+            <li><a href="/registration">SignUp</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <span class="title">Journey With Comfort,Travel With Indian Railways</span>
+        <h1>Indian Railways <span id="element"></span></h1>
+        <p class="bold">
+            "Unlock a world of comfortable journeys with our Indian Railway reservation system, offering efficient
+            online booking services that ensure your travel plans are always on track."
+        </p>
+        <br/>
+        <br/>
+        <a
+                href="/alert"
+                target="_blank"
+                class="btn"
+        >Emergency Service</a
+        >
+        <div class="social-media">
+            <a target="_blank" href="https://www.facebook.com/IRCTCofficial/"
+            ><img src="uploads/fb.jpeg" alt="HTML Icon" class="social-icon"
+            /></a>
+            <a
+                    target="_blank"
+                    href="https://twitter.com/IRCTCofficial"
+            ><img src="uploads/twww.jpeg" alt="HTML Icon" class="social-icon"
+            /></a>
+            <a target="_blank" href="https://www.instagram.com/irctc.official/?igshid=yyg5byow704l"
+            ><img src="uploads/eq.jpeg" alt="HTML Icon" class="social-icon"
+            /></a>
+            <a
+                    target="_blank"
+                    href="https://www.linkedin.com/company/irctcofficial/"
+            ><img src="uploads/ds.jpeg" alt="HTML Icon" class="social-icon"
+            /></a>
+            <div>
+            </div>
+
+        </div>
+        <script>
+            function redirectTo(option) {
+              if (option === 'yes') {
+                // Replace with your desired URL for the 'Yes' option
+                window.location.href ='/home';
+              } else if (option === 'no') {
+                // Replace with your desired URL for the 'No' option
+                window.location.href = "/send_otp';
+              }
+            }
+        </script>
+        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+        <!-- Setup and start animation! -->
+        <script>
+            var typed = new Typed("#element", {
+              strings: ["The Lifeline Of India","Journey Towards Future", "The Comfort Of Travel"],
+              typeSpeed: 100,
+              backSpeed: 60,
+              loop: true,
+            });
+        </script>
+
+    </div>
+
+</div>
+</body>
+</html>

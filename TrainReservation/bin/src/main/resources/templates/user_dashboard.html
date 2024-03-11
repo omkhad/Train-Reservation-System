@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.115.4">
+    <title>Train Reservation</title>
+
+</head>
+
+<body class="backImage">
+<section>
+        <div class="container">
+            <div class="row">
+                <h1 class="col-lg-8 offset-lg-2 text-center mt-3">National Ticket Booking Spot</h1>
+                <div class="card col-lg-8 offset-lg-2 mt-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Hello [[${session.user.getFirstName}]] ! Welcome to our new NITRTC Website</h5>
+                        <p class="card-text">
+                            Hello  [[${session.user.getFirstName}]] Good to See You here.
+                            Here you can Check up the train details, train schedule, fare Enquiry and many more
+                            information.
+                            Just go to the Side Menu Links and Explore the Advantages.
+
+                            Thanks For Being Connected with us!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <th:block th:if="${session.msg_alert}">
+            <table class="tab brown hd">
+                <tr>
+                    <td>[[${session.msg_alert}]]</td>
+                </tr>
+            </table>
+            <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+        </th:block>
+</section>
+</body>
+
+</html>

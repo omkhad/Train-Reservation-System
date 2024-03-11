@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body>
+<section>
+    <header>
+        <h1 class="hd">National Ticket Booking Spot</h1>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_home">Home</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_view_train">View Trains</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_search_train_page">Search By TrainNo</a>
+            </p>
+        </div>
+
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_add_train">Add Train</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_delete_train_page">Delete Train </a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/logout">Logout</a>
+            </p>
+        </div>
+    </header>
+    <div class='main'>
+        <p class='menu'>Add Trains</p>
+    </div>
+    <div th:if="${train != null}">
+        <form class="tab" th:action="@{../update_train_now}" th:object="${train}" method="post">
+            <br /><input type="hidden" name="id" th:value="${train.id}"> <br/>
+            <br /><input type="hidden" name="trainNo" th:value="${train.trainNo}"> <br/>
+            <br /> Train Name: <input type="text" name="trainName" th:value="${train.trainName}"> <br/>
+            <br /> From Station: <input type="text" name="fromStation" th:value="${train.fromStation}"><br />
+            <br /> To Station: <input type="text" name="toStation" th:value="${train.toStation}"><br />
+            <br /> Available: <input type="text" name="seats" th:value="${train.seats}"><br />
+            <br /> Fare (INR): <input type="text" name="fare" th:value="${train.fare}"><br />
+            <br /> <input type="submit" value="UPDATE TRAIN">
+        </form>
+    </div>
+    <br />
+    <th:block th:if="${session.msg_alert}">
+        <table class="tab brown hd">
+            <tr>
+                <td>[[${session.msg_alert}]]</td>
+            </tr>
+        </table>
+        <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+    </th:block>
+</section>
+</body>
+</html>

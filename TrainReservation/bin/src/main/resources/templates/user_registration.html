@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body>
+<section>
+    <header>
+        <h1 class="hd">National Ticket Booking Spot</h1>
+        <div class="main">
+			<span class="menu"> <a href="/home">Login as User</a>
+			</span> <span class="menu"> <a href="/registration">New User
+					Register</a>
+			</span> <span class="menu"> <a href="/send_otp">Admin</a>
+			</span>
+        </div>
+    </header>
+    <table class="tab brown hd">
+        <tr>
+            <td>New User Registration</td>
+        </tr>
+    </table>
+
+    <table class="tab green">
+
+        <tr>
+            <td>
+                <form action="" th:action="@{do_registration}" th:object="${user}" method="post" enctype="multipart/form-data">
+                    Email Id : <input type="email" name="emailID" th:value="${user.emailID}"
+                                      placeholder="Enter your emailId" required><br /> <br />
+                    Password : <input type="password" name="password" required><br />
+                    <br /> FirstName: <input type="text" name="firstName" th:value="${user.firstName}" required><br />
+                    <br /> Last Name: <input type="text" name="lastName" th:value="${user.lastName}" required><br />
+                    <br /> Address : <input type="text" name="address" th:value="${user.address}" required><br />
+                    <br /> Phone No : <input type="number" name="contact" th:value="${user.contact}" required><br />
+                    <br /> Photo : <input type="file" accept="image/*" name="image"><br />
+                    <br /> <input type="submit"
+                                  value=" I AGREE FOR ALL TERMS & CONDITIONS ! REGISTER ME "
+                                  style="text-align: center">
+                </form>
+            </td>
+
+        </tr>
+    </table>
+    <th:block th:if="${session.msg_alert}">
+        <table class="tab brown hd">
+            <tr>
+                <td>[[${session.msg_alert}]]</td>
+            </tr>
+        </table>
+        <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+    </th:block>
+
+
+</section>
+</body>
+</html>

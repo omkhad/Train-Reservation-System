@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+<div class="container">
+    <div class="col-lg-8 offset-lg-2">
+        <div class='row'>
+            <h1 class='text-center'>Hello <span th:text="${user.firstName}"></span>! Welcome to our new NITRTC Website</h1>
+        </div>
+        <div class='p-2 mt-4'>
+            <p1 class='menu'>
+                <a href='/user_view_profile'>View Profile</a>
+            </p1>
+            <p1 class='menu'>
+                <a href='/user_edit_profile'>Edit Profile</a>
+            </p1>
+            <p1 class='menu'>
+                <a href='/user_change_password'>Change Password</a>
+            </p1>
+        </div>
+        <div class='card text-center p-3 mt-4'>Hey ! <p th:text="${user.firstName}"></p>
+            <p>Welcome to NITRTC<br/><br/>Here You can Edit,View Your Profile and change your PassWord.<br/>
+                <br/>Thanks For Being Connected With Us!</p>
+        </div>
+        <th:block th:if="${session.msg_alert}">
+            <table class="tab brown hd">
+                <tr>
+                    <td>[[${session.msg_alert}]]</td>
+                </tr>
+            </table>
+            <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+        </th:block>
+    </div>
+</div>
+</section>
+</body>
+</html>

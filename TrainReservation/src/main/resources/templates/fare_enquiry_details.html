@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+<div class="container-fluid">
+    <div class="row">
+        <div class='col-lg-12'>
+            <h1 class='text-center'> Fare for Trains details are as below.</h1>
+        </div>
+        <div class="col-lg-12">
+            <table class="table">
+                <tr>
+                    <th>Train Name</th>
+                    <th>Train No</th>
+                    <th>From Stn</th>
+                    <th>To Stn</th>
+                    <th>Time</th>
+                    <th>Seats</th>
+                    <th>Fare (INR)</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="item : ${trainModel}">
+                    <td th:text="${item.trainName}"></td>
+                    <td th:text="${item.trainNo}"></td>
+                    <td th:text="${item.fromStation}"></td>
+                    <td th:text="${item.toStation}"></td>
+                    <td>time</td>
+                    <td th:text="${item.seats}"></td>
+                    <td th:text="${item.fare}"></td>
+                    <td>
+                        <a th:href="@{/user_booked_selected_train/{trainNo}(trainNo=${trainModel.trainNo})}">
+                            <div class='red'>Book Now</div>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</section>
+</body>
+</html>

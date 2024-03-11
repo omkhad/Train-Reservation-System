@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body>
+<section>
+    <header>
+        <h1 class="hd">National Ticket Booking Spot</h1>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_home">Home</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_view_trains">View Trains</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_trainBStation">Trains Between Stations</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_train_booking_details">Ticket Booking History</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_fare_enq_page">Fare Enquiry</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_search_available_seat">Seat Availability</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_search_train">Search By TrainNo</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/user_profile">Profile</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/logout">Logout</a>
+            </p>
+        </div>
+    </header>
+    <div class='main'><p1 class='menu'>Your Ticket Booking Information</p1></div>
+    <div th:if="${session.train != null}">
+        <form action="" th:action="@{../user_do_reservation/{trainNo}(trainNo=${trainID.trainNo})}" th:object="${reservation}" method='post'>
+            <div class='tab'>
+                <table>
+                    <tr>
+                        <td>USER ID:</td>
+                        <td>[[${session.user.getEmailID}]]</td>
+                        <td>Train NO:</td>
+                        <td>[[${session.train.getTrainNo}]]</td>
+                    </tr>
+                    <tr>
+                        <td>From Station:</td>
+                        <td>[[${session.train.getFromStation}]]</td>
+                        <td>To Station :</td>
+                        <td>[[${session.train.getToStation}]]</td>
+                    </tr>
+                    <tr>
+                        <td>Journey Date:</td>
+                        <td>
+                            <input type='date' name='reservationDate' th:value="${reservation.reservationDate}">
+                        </td>
+                        <td>No of Seats:</td>
+                        <td>
+                            <input type='number' name='seatNo' th:value="${reservation.seatNo}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Select Class</td>
+                        <td>
+                            <select name='trainClass' th:value="${reservation.trainClass}" required>
+                                <option value='Sleeper(SL)'>Sleeper(SL)</option>
+                                <option value='Second Sitting(2S)'>Second Sitting(2S)</option>
+                                <option value='AC First Class(1A)'>AC First Class(1A)</option>
+                                <option value='AC 2 Tier(2A)'>AC 2 Tier(2A)</option>
+                            </select>
+                        </td>
+                        <td>Berth Preference</td>
+                        <td>
+                            <select name='trainBerth' th:value="${reservation.trainBerth}">
+                                <option value='NO'>No Preference</option>
+                                <option value='LB'>Lower Berth(LB)</option>
+                                <option value='UB'>Lower Berth(UB)</option>
+                                <option value='C'>Cabin</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class='tab'>
+                <p1 class='menu'>
+                    <input type='submit' value='Pay And Book'>
+                </p1>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

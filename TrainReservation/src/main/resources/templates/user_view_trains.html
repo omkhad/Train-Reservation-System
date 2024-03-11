@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+<div class="container-fluid">
+    <div class="row">
+        <div class='col-lg-12'>
+            <h1 class='text-center'>Running Trains</h1>
+        </div>
+        <div class="col-lg-12">
+            <table class="table">
+                <tr>
+                    <th>Train Name</th>
+                    <th>Train Number</th>
+                    <th>From Station</th>
+                    <th>To Station</th>
+                    <th>Time</th>
+                    <th>Seats Available</th>
+                    <th>Fare (INR)</th>
+                    <th>Booking</th>
+                </tr>
+                <tr th:each="item : ${train}">
+                    <td>
+                        <a th:href="@{/user_view_selected_train/{trainNo}(trainNo=${item.trainNo})}"
+                           th:text="${item.trainName}">
+                        </a>
+                    </td>
+
+                    <td th:text="${item.trainNo}">train no</td>
+                    <td th:text="${item.fromStation}">from station</td>
+                    <td th:text="${item.toStation}">to station</td>
+                    <td >time</td>
+                    <td th:text="${item.seats}">get seats</td>
+                    <td th:text="${item.fare}">get fare </td>
+                    <td>
+                        <a th:href="@{/user_booked_selected_train/{trainNo}(trainNo=${item.trainNo})}">
+                            <div class='red'>Book Now</div>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body>
+<section>
+    <header>
+        <h1 class="hd">National Ticket Booking Spot</h1>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_home">Home</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_view_train">View Trains</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_search_train_page">Search By TrainNo</a>
+            </p>
+        </div>
+
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_add_train">Add Train</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_delete_train_page">Delete Train </a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/logout">Logout</a>
+            </p>
+        </div>
+    </header>
+    <div class='tab'>
+        <p class='menu'> Hey, Admin ! Welcome to our new NITRTC Website
+        </p>
+    </div>
+
+    <div class='main'>
+        <p class='menu'>Train Cancellation</p>
+    </div>
+    <form class="tab"  action="" th:action="@{do_delete_train}" th:object="${train}" method="post">
+        Train Number:<input type="number" name="trainNo" th:value="${train.trainNo}"><br />
+        <br /> <input type="submit" value=" DELETE TRAIN ">
+    </form>
+    <br />
+</section>
+</body>
+</html>

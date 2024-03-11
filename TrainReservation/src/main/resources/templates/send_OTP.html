@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Trains</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(
+                120deg,
+                #1c99fe 20.69%,
+                #7644ff 50.19%,
+                #fd4766 79.69%
+            ); /* Your background gradient */
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .formBox {
+            padding: 30px; /* Increased padding */
+            text-align: center;
+            width: 90%;
+            max-width: 500px; /* Increased max-width */
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Border styles */
+            border: 8px solid aqua;
+            border-image: linear-gradient(
+                to right,
+                aqua,
+                yellow,
+                black
+            );
+            border-image-slice: 1;
+        }
+
+        .tab.green {
+            /* Your green tab styles */
+        }
+
+        .tab.brown {
+            /* Your brown tab styles */
+        }
+
+        .hd {
+            text-align: center;
+        }
+
+        .inputContainer {
+            margin-top: 20px;
+        }
+
+        .inputContainer input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submitBtn {
+            margin-top: 20px;
+        }
+
+        .submitBtn button {
+            padding: 10px 20px;
+            background-color: #008000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <header>
+        <h1 class="hd">ADMIN LOGIN</h1>
+    </header>
+    <div class="tab green"></div>
+    <form action="" th:action="@{verify_opt}" th:object="${otp}" class="tab brown formBox" method="post">
+        <h2>Enter Your OTP</h2>
+        <div class="inputContainer">
+            <input type="text" name="otp" th:value="${otp.getOtp}" placeholder="Enter Your OTP">
+        </div>
+        <div class="submitBtn">
+            <button type="submit">VERIFY OTP</button>
+        </div>
+    </form>
+    <div th:if="${session.msg_alert}" class="message">
+        <table class="tab brown hd">
+            <tr>
+                <td th:text="${session.msg_alert}"></td>
+            </tr>
+        </table>
+        <div th:text="${@sessionService.removeMessageFromSession()}"></div>
+    </div>
+</section>
+</body>
+</html>

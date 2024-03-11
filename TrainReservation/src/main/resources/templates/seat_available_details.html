@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+<div class="container-fluid">
+    <div class="row">
+        <div class='col-lg-12'>
+            <h1 class='text-center'> Hello [[${session.user.getFirstName}]] Welcome to our new NITRTC Website.</h1>
+        </div>
+        <br><br><br>
+        <div class="text-center">
+                <p1 class='menu'>Available Seats are
+                    <p2 class=\"red\" th:text="${trainModel.seats}"></p2>
+                </p1>
+        </div>
+        <br><br><br>
+        <div class="col-lg-12">
+            <table class="table">
+                <tr>
+                    <td class='blue'>Train Name :</td>
+                    <td th:text="${trainModel.trainName}"> </td>
+                </tr>
+                <tr>
+                    <td class='blue'>Train Number :</td>
+                    <td th:text="${trainModel.trainNo}"></td>
+                </tr>
+                <tr>
+                    <td class='blue'>From Station :</td>
+                    <td th:text="${trainModel.fromStation}"></td>
+                </tr>
+                <tr>
+                    <td class='blue'>To Station :</td>
+                    <td th:text="${trainModel.toStation}"></td>
+                </tr>
+                <tr>
+                    <td class='blue'>Available Seats:</td>
+                    <td th:text="${trainModel.seats}"></td>
+                </tr>
+                <tr>
+                    <td class='blue'>Fare (INR) :</td>
+                    <td th:text="${trainModel.fare}"> RS</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body>
+<section>
+    <header>
+        <h1 class="hd">National Ticket Booking Spot</h1>
+        <div class="main">
+			<span class="menu">
+				<a href="/home">Login as User</a>
+			</span>
+            <span class="menu">
+				<a href="/registration">New User Register</a>
+			</span>
+        </div>
+    </header>
+    <div class="tab green">User Login</div>
+    <form  action="" th:action="@{verify_opt}" th:object="${otp}" class="tab brown" method="post">
+        <br /> UserName: <input type="text" name="otp" th:value="${otp.getOtp}"
+                                placeholder="Enter Your OTP"><br /> <br /> <input
+            type="submit" value=" VERIFY OTP "><br />
+
+    </form>
+    <br />
+    <th:block th:if="${session.msg_alert}">
+        <table class="tab brown hd">
+            <tr>
+                <td>[[${session.msg_alert}]]</td>
+            </tr>
+        </table>
+        <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+    </th:block>
+</section>
+</body>
+</html>

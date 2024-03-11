@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+<div class="container-fluid">
+    <div class="row">
+        <div class='col-lg-12'>
+            <h1 class='text-center'>Add Trains</h1>
+            <div th:if="${train != null}">
+                <form action="" th:action="@{../update_train_now}" th:object="${train}" method="post">
+                    <br /><input type="hidden" name="id" th:value="${train.id}"> <br/>
+                    <br /><input type="hidden" name="trainNo" th:value="${train.trainNo}"> <br/>
+                    <br /> Train Name: <input type="text" name="trainName" th:value="${train.trainName}"> <br/>
+                    <br /> From Station: <input type="text" name="fromStation" th:value="${train.fromStation}"><br />
+                    <br /> To Station: <input type="text" name="toStation" th:value="${train.toStation}"><br />
+                    <br /> Available: <input type="text" name="seats" th:value="${train.seats}"><br />
+                    <br /> Fare (INR): <input type="text" name="fare" th:value="${train.fare}"><br />
+                    <br /> <input type="submit" value="UPDATE TRAIN">
+                </form>
+            </div>   
+        </div>
+    </div>
+</div>
+<th:block th:if="${session.msg_alert}">
+        <table class="tab brown hd">
+            <tr>
+                <td>[[${session.msg_alert}]]</td>
+            </tr>
+        </table>
+        <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+    </th:block>
+</section>
+</body>
+</html>

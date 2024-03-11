@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="text-center">Search Train</h1>
+            </div>
+            <div class="col-lg-8 offset-lg-2 mt-5">
+                <div class="card p-4">
+                    <form action="" th:action="@{/user_do_search_train_details}" th:object="${train}" method="post" >
+                        TrainNumber: <input class="form-control" type="text" name="trainNo" th:value="${train.trainNo}"><br />
+                        <br /> <input type="submit" class="btn btn-outline-primary" value=" SEARCH TRAIN "><br />
+                    </form>
+                </div>
+            </div>
+            <br/>
+            <th:block th:if="${session.msg_alert}">
+                <table class="tab brown hd">
+                    <tr>
+                        <td>[[${session.msg_alert}]]</td>
+                    </tr>
+                </table>
+                <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+            </th:block>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+

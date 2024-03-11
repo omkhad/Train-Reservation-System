@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Contact Us</title>
+</head>
+<body>
+ <section>
+     <div class="formBox">
+         <h2>Contact Us</h2>
+         <p>You will hear from us at the earliest!</p>
+         <form action=""  th:action="@{/contact_us}" th:object="${contact}" method="post">
+             <div class="inputContainer">
+                 <i class="fa fa-user icon"></i>
+                 <input type="text" placeholder="Full Name" name="fullName" th:value="${contact.fullName}" id="name">
+             </div>
+             <div class="inputContainer">
+                 <i class="fa fa-envelope icon"></i>
+                 <input type="email" name="email" th:value="${contact.email}" id="mail" placeholder="Email">
+             </div>
+             <div class="inputContainer">
+                 <i class="fas fa-phone icon"></i>
+                 <input type="tel" name="contactNo" th:value="${contact.contactNo}" id="phone" placeholder="Phone" pattern="[0-9]{6,}">
+             </div>
+             <div class="inputContainer">
+                 <textarea name="comments" th:value="${contact.comments}" id="query" cols="30" rows="5" placeholder="Any comment or your query"></textarea>
+             </div>
+             <div class="submitBtn">
+                 <button id="btn" type="submit">Send</button>
+             </div>
+         </form>
+         <p class="extra">You can also contact us at 181-1711-322</p>
+     </div>
+ </section>
+</body>
+</html>

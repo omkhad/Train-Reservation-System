@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}">Base HTML</title>
+    <link href="UserHome_Css.css" type="text/css" rel="stylesheet">
+    <link href="../UserHome_Css.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="${content}"></div>
+</body>
+</html>

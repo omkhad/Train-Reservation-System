@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+<div class="container-fluid">
+    <div class="row">
+        <div class='col-lg-12'>
+            <h1 class='text-center'>Hey, Admin ! Welcome to our Reservation Website</h1>
+            <h1 class='text-center'>Running Trains</h1>
+        </div>
+        <div class="col-lg-12">
+            <table class="table">
+                <tr>
+                    <th>Train Name</th>
+                    <th>Train Number</th>
+                    <th>From Station</th>
+                    <th>To Station</th>
+                    <th>Seats Available</th>
+                    <th>Fare (INR)</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="item : ${trains}">
+                    <td  th:text="${item.trainName}"></td>
+                    <td  th:text="${item.trainNo}"></td>
+                    <td  th:text="${item.fromStation}"></td>
+                    <td  th:text="${item.toStation}"></td>
+                    <td  th:text="${item.seats}"></td>
+                    <td  th:text="${item.fare}"></td>
+                    <td><a th:href="@{/admin_train_update/{trainNo}(trainNo=${item.trainNo})}">Update</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</section>
+</body>
+</html>

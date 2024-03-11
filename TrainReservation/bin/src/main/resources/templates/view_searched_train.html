@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body>
+<section>
+    <header>
+        <h1 class="hd">National Ticket Booking Spot</h1>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_home">Home</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_view_train">View Trains</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_search_train_page">Search By TrainNo</a>
+            </p>
+        </div>
+
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_add_train">Add Train</a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/admin_delete_train_page">Delete Train </a>
+            </p>
+        </div>
+        <div class="home">
+            <p class="menu">
+                <a href="/logout">Logout</a>
+            </p>
+        </div>
+    </header>
+    <div class='main'>
+        <p1 class='menu'>Searched Train Detail</p1>
+    </div>
+    <div class='tab' th:if="${session.train != null}">
+        <table>
+            <tr>
+                <td class='blue'>Train Name :</td>
+                <td>[[${session.train.getTrainName}]]</td>
+            </tr>
+            <tr>
+                <td class='blue'>Train Number :</td>
+                <td>[[${session.train.getTrainNo}]]</td>
+            </tr>
+            <tr>
+                <td class='blue'>From Station :</td>
+                <td>[[${session.train.getFromStation}]]</td>
+            </tr>
+            <tr>
+                <td class='blue'>To Station :</td>
+                <td>[[${session.train.getToStation}]]</td>
+            </tr>
+            <tr>
+                <td class='blue'>Available Seats:</td>
+                <td>[[${session.train.getSeats}]]</td>
+            </tr>
+            <tr>
+                <td class='blue'>Fare (INR) :</td>
+                <td>[[${session.train.getFare}]]</td>
+            </tr>
+            <tr>
+                <td class='blue'>Action</td>
+                <td><a th:href="@{/admin_train_update/{trainNo}(trainNo=${session.train.getTrainNo})}">UPDATE TRAIN</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <th:block th:if="${session.msg_alert}">
+        <table class="tab brown hd">
+            <tr>
+                <td>[[${session.msg_alert}]]</td>
+            </tr>
+        </table>
+        <th:block th:text="${@sessionService.removeMessageFromSession()}"></th:block>
+    </th:block>
+</section>
+</body>
+</html>

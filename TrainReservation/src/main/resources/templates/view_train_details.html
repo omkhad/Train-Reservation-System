@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+<div class="container-fluid">
+    <div class="row">
+        <div class='col-lg-12'>
+            <h1 class='text-center'>Selected Train Detail</h1>
+        </div>
+        <div class="col-lg-12">
+            <div th:if="${session.train != null}"></div>
+            <table class="table">
+                <tr>
+                    <td class='blue'>Train Name :</td>
+                    <td>[[${session.train.getTrainName}]]</td>
+                </tr>
+                <tr>
+                    <td class='blue'>Train Number :</td>
+                    <td>[[${session.train.getTrainNo}]]</td>
+                </tr>
+                <tr>
+                    <td class='blue'>From Station :</td>
+                    <td>[[${session.train.getFromStation}]]</td>
+                </tr>
+                <tr>
+                    <td class='blue'>To Station :</td>
+                    <td>[[${session.train.getToStation}]]</td>
+                </tr>
+                <tr>
+                    <td class='blue'>Available Seats:</td>
+                    <td>[[${session.train.getSeats}]]</td>
+                </tr>
+                <tr><td class='blue'>Fare (INR) :</td>
+                    <td>[[${session.train.getFare}]]</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</section>
+</body>
+</html>

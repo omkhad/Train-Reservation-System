@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user_base::layout(~{::section})}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>E-Trains</title>
+</head>
+<body class="backImage">
+<section>
+   <div class="container">
+       <div class="row">
+           <div class='col-lg-12'>
+               <h1 class='text-center'>Booked Ticket History</h1>
+           </div>
+           <div class='col-lg-12' th:if="${reservation != null}">
+               <table class="table">
+                   <tr>
+                       <th>Transaction ID</th>
+                       <th>Train Number</th>
+                       <th>From Station</th>
+                       <th>To Station</th>
+                       <th>Journey Date</th>
+                       <th>Seat</th>
+                       <th>Amount Paid</th>
+                   </tr>
+                   <tr th:each="item : ${reservation}">
+                       <td th:text="${item.transactionID}"></td>
+                       <td th:text="${item.train.trainNo}"></td>
+                       <td th:text="${item.train.fromStation}"></td>
+                       <td th:text="${item.train.toStation}"></td>
+                       <td th:text="${item.reservationDate}"></td>
+                       <td th:text="${item.seatNo}"></td>
+                       <td th:text="${item.totalAmount}"></td>
+                   </tr>
+               </table>
+           </div>
+       </div>
+   </div>
+</section>
+</body>
+</html>
